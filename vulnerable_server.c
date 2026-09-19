@@ -11,7 +11,7 @@
 static void handle_client(int client_socket)
 {
     char buffer[BUFFER_SIZE];
-    const char *welcome = "Welcome to the secure server!\n";
+    const char *welcome = "Welcome to the vulnerable server!\n";
     ssize_t received;
 
     if (send(client_socket, welcome, strlen(welcome), 0) < 0) {
@@ -81,6 +81,7 @@ int main(void)
     }
 
     printf("Server is listening on port %d...\n", PORT);
+    printf("This is the practical lab server.\n");
 
     while (1) {
         client_socket = accept(server_fd, (struct sockaddr *)&address, &addrlen);
